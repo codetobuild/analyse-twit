@@ -1,5 +1,6 @@
 const passport = require("passport");
-const TwitterStrategy = require("passport-twitter");
+const TwitterStrategy = require("passport-twitter").Strategy;
+// const TwitterStrategy = require("passport-twitter");
 const keys = require("./keys.copy");
 const User = require("../models/user-model");
 // const createUser = "../service/createUser";
@@ -34,6 +35,7 @@ passport.use(
       const currentUser = await User.findOne({
         twitterId: profile._json.id_str,
       });
+      console.log({currentUser});
       // create new user if the database doesn't have this user
       if (!currentUser) {
         const { id_str, name, screen_name, profile_image_url } = profile._json;

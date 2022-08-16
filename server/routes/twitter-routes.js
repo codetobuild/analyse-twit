@@ -17,6 +17,7 @@ const {
   tweetTimelineReverseChronological,
 } = require("../controllers/tweets/timeline");
 const { singleTweet } = require("../controllers/tweets/tweet");
+const {searchTweetByKeyword} = require('../controllers/tweets/keyword');
 
 router.get("/", (req, res, next) => {
   try {
@@ -48,5 +49,9 @@ router.get("/tweetTimeline", tweetTimeline);
 router.get("/tweetTimeline/reverse", tweetTimelineReverseChronological);
 
 router.get("/tweetLookup/:tweetId", singleTweet);
+
+// search tweet by keyword
+router.get('/searchTweetByKeyword/:keyword', searchTweetByKeyword);
+
 
 module.exports = router;
